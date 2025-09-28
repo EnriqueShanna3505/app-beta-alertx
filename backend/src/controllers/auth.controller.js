@@ -38,8 +38,11 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
-      generateTokenAndSetCookie(newUser._id, res);
-      await newUser.save();
+      // generateTokenAndSetCookie(newUser._id, res);
+      // await newUser.save();
+
+      const savedUser = await newUser.save();
+      generateTokenAndSetCookie(savedUser._id, res);
       res.status(201).json({
         _id: newUser._id,
         fullName: newUser.fullName,
