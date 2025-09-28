@@ -1,7 +1,7 @@
 //CLEANUP codebase/ Code optimization for routes or endpoints
 
 import express from 'express';
-import { signup } from '../controllers/auth.controller.js';
+import { signup, login, logout } from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
@@ -9,12 +9,8 @@ const router = express.Router();
 
 router.post('/signup', signup);
 
-router.get('/login', (req, res) => {
-  res.send('This is login endpoint');
-});
+router.post('/login', login);
 
-router.get('/logout', (req, res) => {
-  res.send('This is logout endpoint');
-});
+router.post('/logout', logout);
 
 export default router;
